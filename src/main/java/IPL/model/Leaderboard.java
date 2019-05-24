@@ -12,6 +12,7 @@ import javax.persistence.Id;
 public class Leaderboard {
 
     @Id
+    private String email;
     private String name;
     private int totalPoint;
     private int matchWinnerPoint;
@@ -20,7 +21,14 @@ public class Leaderboard {
     private int momPoint;
     private int runRangePoint;
     private int bonusPoint;
-    private int strike;
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
     public String getName() {
         return name;
@@ -84,13 +92,5 @@ public class Leaderboard {
 
     public void setBonusPoint(int bonusPoint) {
         this.bonusPoint = bonusPoint;
-    }
-
-    public int getStrike() {
-        return strike;
-    }
-
-    public void setStrike(int strike) {
-        this.strike = strike;
     }
 }

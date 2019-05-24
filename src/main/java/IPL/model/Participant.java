@@ -3,6 +3,7 @@ package IPL.model;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.logging.Logger;
 
 /**
  * Created on 4/8/2019 12:45 PM.
@@ -12,6 +13,7 @@ import java.util.Map;
 public class Participant {
 
     private Date timeStamp;
+    private String email;
     private String name;
     private Map<Question.QuestionType, String> predictions;
     private int totalPoints;
@@ -33,6 +35,14 @@ public class Participant {
         this.totalPoints = totalPoints;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
     public String getName() {
         return name;
     }
@@ -51,7 +61,7 @@ public class Participant {
 
     @Override
     public String toString() {
-        return "Name : " + this.getName() + " ," +
+        return "Name : " + this.getEmail() + " ," +
                "Total points : " + this.getTotalPoints()+ " ," +
                "Predictions : " + this.getPredictions();
     }
@@ -62,19 +72,5 @@ public class Participant {
 
     public void setPointsForEachQuestion(Question.QuestionType questionType, int point){
         this.getPoints().put(questionType, point);
-    }
-
-    public String[] getCalculatedCSVRow(){
-        return new String[]{
-            this.getTimeStamp().toString(),
-            this.getName(),
-            String.valueOf(this.getTotalPoints()),
-            String.valueOf(this.getPoints().get(Question.QuestionType.MATCH_WINNER)),
-            String.valueOf(this.getPoints().get(Question.QuestionType.HIGHEST_RUN_GETTER)),
-            String.valueOf(this.getPoints().get(Question.QuestionType.HIGHEST_WICKET_TAKER)),
-            String.valueOf(this.getPoints().get(Question.QuestionType.MOM)),
-            String.valueOf(this.getPoints().get(Question.QuestionType.RUN_RANGE)),
-            String.valueOf(this.getPoints().get(Question.QuestionType.BONUS)),
-        };
     }
 }
